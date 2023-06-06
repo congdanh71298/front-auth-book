@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  front:
+    image: front
+    build:
+      context: ./front
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - auth
+      - books
+    networks:
+      - mynet
+
+  auth:
+    image: auth
+    build:
+      context: ./auth
+      dockerfile: ./Dockerfile
+    ports:
+      - 4000:4000
+    networks:
+      - mynet
+
+  books:
+    image: books
+    build:
+      context: ./books
+      dockerfile: ./Dockerfile
+    ports:
+      - 4001:4001
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
