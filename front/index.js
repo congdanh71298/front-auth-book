@@ -10,6 +10,14 @@ app.get('/', (req, res) => {
   res.render('index'); // Replace 'index' with the name of your EJS file
 });
 
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
 // Start the server
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
